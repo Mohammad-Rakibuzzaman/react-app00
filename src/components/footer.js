@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { CtxConsumer } from '../index';
+
+
 
 class Footer extends Component{
     // createAlert(){
@@ -44,34 +47,63 @@ class Footer extends Component{
     render() {
         // return <h2>This is our footer</h2>
         // return <h2 onClick={this.createAlert}>
+        
+        // const animals = ['cat', 'dog', 'horse'];
 
-        return (
-            <div>
+
+
+        // return (
+        //     <div>
                
-                { this.state.isLogin ? (
-                    <React.Fragment>
-                        <h2 onClick={this.props.myAlert}>
-                            {this.props.tradeMark}
-                        </h2>
-                        {/* <input onChange={this.changed} type="text" /> */}
-                        <input value={this.state.name}
-                            onChange={this.changed} type="text" />
-                    </React.Fragment>
-                ) : (
-                    <React.Fragment>
-                        <h2>
-                            You cant see this content sorry
-                        </h2>
-                        <h2>
-                            You must have to login
-                        </h2>
+        //         { this.state.isLogin ? (
+        //             <React.Fragment>
+        //                 <h2 onClick={this.props.myAlert}>
+        //                     {this.props.tradeMark}
+        //                 </h2>
+        //                 {/* <input onChange={this.changed} type="text" /> */}
+        //                 <input value={this.state.name}
+        //                     onChange={this.changed} type="text" />
+        //             </React.Fragment>
+        //         ) : (
+        //             <React.Fragment>
+        //                 <h2>
+        //                     You cant see this content sorry
+        //                 </h2>
+        //                 <h2>
+        //                     You must have to login
+        //                 </h2>
                        
-                    </React.Fragment>
-                )}
+        //             </React.Fragment>
+        //         )}
 
-            </div> 
-        )
+        //     </div> 
+        // )
+        //simplest loop
+        return (
+            <CtxConsumer>
+               {(context) => (
+                    <div>
+                        { context.animals.map( animal => (
+                                <div key={animal}>
+                                    <h1>{animal}</h1>
+                                </div>
+           
+                )) }
+                    </div>
+
+        )}   
+            </CtxConsumer>
+        );
     }
 }
 
 export default Footer;
+
+// { animals.map( animal => {
+//     return (
+//         <div key={animal}>
+//             <h1>{animal}</h1>
+//             {/* <h1>{animal}</h1> */}
+//         </div>
+//     );   
+// }) }
